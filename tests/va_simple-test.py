@@ -19,8 +19,8 @@ class Testbasicoleroymerlinv2(unittest.TestCase):
         options.add_argument("--headless")
         self.driver = webdriver.Firefox(firefox_profile=profile, firefox_options=options)
         self.driver.implicitly_wait(30)
-        self.base_url = "https://hybrissitlm:9002/va/lmbr/pt/BRL/login"
-        #self.base_url = "https://vahomolog.leroymerlin.com.br/va/lmbr/pt/BRL/login"
+        # self.base_url = "https://hybrissitlm:9002/va/lmbr/pt/BRL/login"
+        self.base_url = "https://vahomolog.leroymerlin.com.br/va/lmbr/pt/BRL/login"
         self.verificationErrors = []
         self.accept_next_alert = True
     
@@ -28,8 +28,8 @@ class Testbasicoleroymerlinv2(unittest.TestCase):
         driver = self.driver
 
         print "Acesso ao VA"
-        driver.get("https://hybrissitlm:9002/va/lmbr/pt/BRL/login")
-        #driver.get("https://vahomolog.leroymerlin.com.br/va/lmbr/pt/BRL/login")
+        # driver.get("https://hybrissitlm:9002/va/lmbr/pt/BRL/login")
+        driver.get("https://vahomolog.leroymerlin.com.br/va/lmbr/pt/BRL/login")
         
         print "Login"
         driver.find_element_by_id("j_username").clear()
