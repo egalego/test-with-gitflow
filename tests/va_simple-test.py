@@ -10,10 +10,13 @@ import unittest, time, re
 
 class Testbasicoleroymerlinv2(unittest.TestCase):
     def setUp(self):
-    	profile = webdriver.FirefoxProfile()
-    	profile.accept_untrusted_certs = True
-    	options = Options()
-    	options.add_argument("--headless")
+        
+        print "Iniciando os testes para VA (básico)"
+
+        profile = webdriver.FirefoxProfile()
+        profile.accept_untrusted_certs = True
+        options = Options()
+        options.add_argument("--headless")
         self.driver = webdriver.Firefox(firefox_profile=profile, firefox_options=options)
         self.driver.implicitly_wait(30)
         self.base_url = "https://hybrissitlm:9002/va/lmbr/pt/BRL/login"
@@ -23,24 +26,30 @@ class Testbasicoleroymerlinv2(unittest.TestCase):
     
     def test_basicoleroymerlinv2(self):
         driver = self.driver
-        # //Acesso ao Hybri
+
+        print "Acesso ao VA"
         driver.get("https://hybrissitlm:9002/va/lmbr/pt/BRL/login")
         #driver.get("https://vahomolog.leroymerlin.com.br/va/lmbr/pt/BRL/login")
-        # // login Hybris
+        
+        print "Login"
         driver.find_element_by_id("j_username").clear()
         driver.find_element_by_id("j_username").send_keys("51001191")
         driver.find_element_by_id("j_password").clear()
         driver.find_element_by_id("j_password").send_keys("1234")
         driver.find_element_by_xpath("(//button[@type='submit'])[2]").click()
-        # //  Criar Carrinho
+        
+        print "Criar Carrinho"
         driver.find_element_by_link_text("Criar carrinho...").click()
-        # // Inserir produto no carrinho via hybris
+        
+        print "Inserir produto no carrinho"
         driver.find_element_by_name("eanOrCode").clear()
         driver.find_element_by_name("eanOrCode").send_keys("89669160")
         driver.find_element_by_xpath("(//button[@type='submit'])[3]").click()
-        # // Logout
+        
+        print "Logout"
         driver.find_element_by_xpath("//li[5]/a/span").click()
-        # // Fechar janela
+        
+        # print "Fechar janela
         # // driver.close()
     
     def is_element_present(self, how, what):
